@@ -18,6 +18,6 @@ end
 
 # Use the tfsconfig utility to setup the server
 execute 'tfsconfig server setup' do
-  command '%programfiles%\Microsoft Team Foundation Server 15.0\Tools\TFSConfig.exe Unattend /configure /type:basic /unattendfile:configTFSBasic.ini'
+  command '"%programfiles%\Microsoft Team Foundation Server 15.0\Tools\TFSConfig.exe" Unattend /configure /type:basic /unattendfile:configTFSBasic.ini'
   action :run
 end
