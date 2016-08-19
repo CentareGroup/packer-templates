@@ -77,6 +77,17 @@
       ]
     },
     {
+      "type": "file",
+      "source": "artifacts",
+      "destination": "c:/windows/temp/packer-artifacts"
+    },
+    {
+      "type": "powershell",
+      "script": "scripts/install-tfs.ps1",
+      "elevated_user": "vagrant",
+      "elevated_password": "vagrant"
+    },
+    {
       "type": "powershell",
       "script": "scripts/cleanup.ps1",
       "elevated_user": "vagrant",

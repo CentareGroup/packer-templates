@@ -2,6 +2,9 @@ iso
 output-virtualbox-iso
 output-hyperv-iso
 output-qemu
+hyper-v-output/Vagrantfile
+hyper-v-output/Virtual Hard Disks/
+package-hyper-v.tar
 *.iso
 *.box
 .kitchen

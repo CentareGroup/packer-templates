@@ -6,7 +6,7 @@ properties {
 Task default -depends Build-Packer, prepare-hyperv, convert-tovhd, package-hyperv
 
 task build-packer {
-  exec { packer build -force (Join-Path $baseDir vbox-2012r2.json) }
+  exec { packer build -force (Join-Path $baseDir vbox-2016.json) }
 }
 
 task prepare-hyperv {
@@ -38,8 +38,12 @@ task convert-tovhd {
 }
 
 task package-hyperv {
-  ."$env:chocolateyInstall\tools\7za.exe" a -ttar (join-path $baseDir "package-hyper-v.tar") (Join-Path $baseDir "hyper-v-output\*")
-  ."$env:chocolateyInstall\tools\7za.exe" a -tgzip (join-path $baseDir "package-hyper-v-$version.box") (join-path $baseDir "package-hyper-v.tar")
+  $7zexe = "$env:chocolateyInstall\tools\7za.exe"
+  if ( -not (Test-Path $7zexe)) {
+    $7zexe = "$env:chocolateyInstall\tools\7z.exe"
+  }
+  .$7zexe a -ttar (join-path $baseDir "package-hyper-v.tar") (Join-Path $baseDir "hyper-v-output\*")
+  .$7zexe a -tgzip (join-path $baseDir "package-hyper-v-$version.box") (join-path $baseDir "package-hyper-v.tar")
 }
 
 task Upload-Box {
