@@ -78,7 +78,7 @@
     },
     {
       "type": "file",
-      "source": "artifacts",
+      "source": "artifacts/",
       "destination": "c:/windows/temp/packer-artifacts"
     },
     {
